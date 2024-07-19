@@ -13,7 +13,7 @@ actor Token {
 
   let owner : Principal = Principal.fromText("hxslz-t44pe-tf72c-dz7uf-t6n73-7ovlz-u766n-vwpj2-ru4nc-dgbch-wae");
   let totalSupply : Nat = 1000000000;
-  let symbol : Text = "DANG";
+  let symbol : Text = "AMNT";
   
   private stable var balanceEntries: [(Principal, Nat)] = [];
   private var balances = HashMap.HashMap<Principal, Nat>(1, Principal.equal, Principal.hash);
@@ -36,7 +36,6 @@ actor Token {
   };
 
   public shared(msg) func payOut() : async Text {
-   // Debug.print(debug_show (msg.caller));
     if (balances.get(msg.caller) == null){
        let amount = 10000;
        let result = await transfer(msg.caller, amount);
